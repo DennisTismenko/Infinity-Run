@@ -1,0 +1,19 @@
+fileFormatVersion: 2
+guid: 3ade13fd4e936f443a39df3537b35264
+timeCreated: 1452792876
+licenseType: Free
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - trailsBlack: {fileID: 19800016, guid: 031d08f52af1daa4f929b85221519426, type: 2}
+  - trailsWhite: {fileID: 19800002, guid: 031d08f52af1daa4f929b85221519426, type: 2}
+  - shower: {fileID: 19800004, guid: 031d08f52af1daa4f929b85221519426, type: 2}
+  - fireball: {fileID: 19800012, guid: 031d08f52af1daa4f929b85221519426, type: 2}
+  - dust: {fileID: 19800006, guid: 031d08f52af1daa4f929b85221519426, type: 2}
+  - shockwave: {fileID: 19800008, guid: 031d08f52af1daa4f929b85221519426, type: 2}
+  - smokeBlack: {fileID: 19800010, guid: 031d08f52af1daa4f929b85221519426, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
