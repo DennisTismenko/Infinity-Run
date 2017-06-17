@@ -3,13 +3,13 @@ using System.Collections;
 
 public class ArmorBarScript : MonoBehaviour {
 	
-	public UIProgressBar bar;
-	public UILabel label;
+	//public UIProgressBar bar;
+	//public UILabel label;
 	GameObject player;
 	Player playerScript;
 
 
-	
+	/*
 	void Start()
 	{
 		player = GameObject.Find ("Player");
@@ -33,4 +33,5 @@ public class ArmorBarScript : MonoBehaviour {
 		}
 
 	}
+	*/
 }
