@@ -40,7 +40,7 @@ public class PlayerController : MonoBehaviour {
 
 	Move ();
 
-		if (!Player.isAlive) 
+		if (!Player.alive) 
 		{
 			gameObject.GetComponent<PlayerController>().enabled = false;
 		}
