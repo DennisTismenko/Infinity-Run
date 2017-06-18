@@ -113,9 +113,6 @@ public class PlayerController : MonoBehaviour {
 
 	}
 
-	void Stabilize(){
-	}
-
 	void OnCollisionEnter(Collision col){
 		
 	}

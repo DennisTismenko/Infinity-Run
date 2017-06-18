@@ -26,14 +26,6 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (health <= 0 && alive)
-        {
-            killPlayer();
-        }
-        if (Input.GetKey(KeyCode.K))
-        {
-            killPlayer();
-        }
     }
 
 
@@ -68,6 +60,10 @@ public class Player : MonoBehaviour
             {
                 health -= amount;
             }
+        }
+        if (health <= 0 && alive)
+        {
+            killPlayer();
         }
     }
 
