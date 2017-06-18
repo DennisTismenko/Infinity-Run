@@ -17,7 +17,6 @@ public class Crosshair : MonoBehaviour {
 
 		crosshairTexture = Resources.Load ("Textures/square") as Texture;
 		crosshairHitTexture = Resources.Load ("Textures/squareHit") as Texture;
-
 		crosshairRect = new Rect (Screen.width/2 - crosshairSize/2, Screen.height/2 - crosshairSize/2, crosshairSize, crosshairSize);
 	}
 

@@ -5,10 +5,12 @@ using UnityEngine.UI;
 public class Player : MonoBehaviour
 {
 
-    static float maxHp;
-    static float health;
-    static float armour;
+    public static float maxHp;
+    public static float health;
+    public static float armour;
     public static float damage;
+    public delegate void tookDamage();
+    public static event tookDamage playerHit;
 
     public static bool alive;
     public static bool godMode;
@@ -19,7 +21,7 @@ public class Player : MonoBehaviour
         alive = true;
         maxHp = 100f;
         health = maxHp;
-        armour = 100f;
+        armour = 0;
         damage = 10;
     }
 
@@ -74,6 +76,7 @@ public class Player : MonoBehaviour
         if (col.gameObject.layer == 8)
         {
             TakeDamage(30);
+            playerHit();
         }
     }
 
