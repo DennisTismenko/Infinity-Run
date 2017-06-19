@@ -24,6 +24,6 @@ public class ScoreScript : MonoBehaviour {
 	}
 
 	int CalculateScore(){
-		return (int)(Player.scoreMultiplier *Time.time*100 - startTime);
+		return (int)(Time.time*100 - startTime);
 	}
 }

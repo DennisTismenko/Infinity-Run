@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Enemy : MonoBehaviour {
 
-	private int health;
+	private float health;
 	//public GameObject player;
 	private DestroyByCollisionSmallExplosion sAnimation;
 	private DestroyByCollisionBigExplosion bAnimation;
@@ -11,16 +11,12 @@ public class Enemy : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		if (this.gameObject.name == "Asteroid" || this.gameObject.name == "Asteroid(Clone)") {
-			health = 20;
-		} else if (this.gameObject.name == "EnemyShip" || this.gameObject.name == "EnemyShip(Clone)") {
-			health = 100;
+			health = 20f;
 		} else {
-			health = 10;
+			health = 10f;
 		}
-
 		sAnimation = this.gameObject.GetComponent<DestroyByCollisionSmallExplosion>();
 		bAnimation = this.gameObject.GetComponent<DestroyByCollisionBigExplosion> ();
-			
 	}
 
 	// Update is called once per frame
@@ -30,19 +26,12 @@ public class Enemy : MonoBehaviour {
 		}
 	}
 
-	public void takeDamage (int amount){
+	public void takeDamage (float amount){
 		health -= amount;
 	}
 
 	void destruct (){
-
-		//this.gameObject.GetComponent<DestroyByCollisionSmallExplosion> ().playSmallExplosion();
-		if (this.gameObject.name == "Mine" || this.gameObject.name == "Mine(Clone)")
-		{
-			bAnimation.PlayBigExplosion();
-		} else {
-			sAnimation.playSmallExplosion();
-		}
+        sAnimation.playSmallExplosion();
 		Destroy (this.gameObject);
 	}
 
@@ -51,7 +40,7 @@ public class Enemy : MonoBehaviour {
 			if (col.gameObject.tag == "PlayerShot"){
 				Destroy (col.gameObject);
 				sAnimation.playHitEffect ();
-				takeDamage (10 * Player.damageMultiplier);
+				takeDamage (Player.damage);
 			}
 		}
 

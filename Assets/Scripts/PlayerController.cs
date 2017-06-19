@@ -40,7 +40,7 @@ public class PlayerController : MonoBehaviour {
 
 	Move ();
 
-		if (!Player.isAlive) 
+		if (!Player.alive) 
 		{
 			gameObject.GetComponent<PlayerController>().enabled = false;
 		}
@@ -111,9 +111,6 @@ public class PlayerController : MonoBehaviour {
 		worldPos = (worldPos - transform.position);
 		rb.AddForce (worldPos * speed,ForceMode.Force);
 
-	}
-
-	void Stabilize(){
 	}
 
 	void OnCollisionEnter(Collision col){
