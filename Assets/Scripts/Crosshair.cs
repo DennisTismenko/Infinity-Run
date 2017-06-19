@@ -13,8 +13,8 @@ public class Crosshair : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		crosshairSize = Screen.width * 0.025f;
-
+        Cursor.visible = false;
+        crosshairSize = Screen.width * 0.025f;
 		crosshairTexture = Resources.Load ("Textures/square") as Texture;
 		crosshairHitTexture = Resources.Load ("Textures/squareHit") as Texture;
 		crosshairRect = new Rect (Screen.width/2 - crosshairSize/2, Screen.height/2 - crosshairSize/2, crosshairSize, crosshairSize);
@@ -22,8 +22,11 @@ public class Crosshair : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		
-		ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        if (Cursor.visible)
+        {
+            Cursor.visible = false;
+        }
+        ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 		if (Physics.Raycast (ray, out hit))
 		{
 			if (hit.collider.tag == "Enemy") {
