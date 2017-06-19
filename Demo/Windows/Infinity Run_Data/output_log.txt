@@ -17,39 +17,9 @@ Platform assembly: C:\Users\Dennis\Documents\Unity Projects\Infinity-Run\Demo\Wi
 Loading C:\Users\Dennis\Documents\Unity Projects\Infinity-Run\Demo\Windows\Infinity Run_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
 Platform assembly: C:\Users\Dennis\Documents\Unity Projects\Infinity-Run\Demo\Windows\Infinity Run_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
 Loading C:\Users\Dennis\Documents\Unity Projects\Infinity-Run\Demo\Windows\Infinity Run_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
-- Completed reload, in  0.020 seconds
+- Completed reload, in  0.021 seconds
 Platform assembly: C:\Users\Dennis\Documents\Unity Projects\Infinity-Run\Demo\Windows\Infinity Run_Data\Managed\System.Core.dll (this message is harmless)
 Platform assembly: C:\Users\Dennis\Documents\Unity Projects\Infinity-Run\Demo\Windows\Infinity Run_Data\Managed\System.dll (this message is harmless)
-desktop: 1600x900 60Hz; virtual: 3520x1080 at 0,0
+desktop: 1920x1080 60Hz; virtual: 3520x1080 at 0,0
 <RI> Initializing input.
 <RI> Input initialized.
-desktop: 1920x1080 60Hz; virtual: 3520x1080 at 0,0
-<RI> Initialized touch support.
-The referenced script on this Behaviour (Game Object 'ExplosionMobile') is missing!
- 
-(Filename:  Line: 1743)
-
-The referenced script on this Behaviour (Game Object 'ExplosionMobile') is missing!
- 
-(Filename:  Line: 1743)
-
-UnloadTime: 1.317971 ms
-Setting up 4 worker threads for Enlighten.
-  Thread -> id: 1e80 -> priority: 1 
-  Thread -> id: 37a0 -> priority: 1 
-  Thread -> id: 43f0 -> priority: 1 
-  Thread -> id: 1780 -> priority: 1 
-The referenced script on this Behaviour (Game Object 'Explosion') is missing!
- 
-(Filename:  Line: 1743)
-
-The referenced script on this Behaviour (Game Object 'Explosion') is missing!
- 
-(Filename:  Line: 1743)
-
-Unloading 6 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 4.237009 ms
-
-Unloading 61 unused Assets to reduce memory usage. Loaded Objects now: 751.
-Total: 0.687637 ms (FindLiveObjects: 0.079540 ms CreateObjectMapping: 0.020954 ms MarkObjects: 0.445168 ms  DeleteObjects: 0.141547 ms)
-
