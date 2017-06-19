@@ -6,24 +6,35 @@ using UnityEngine.UI;
 
 public class EventHandler : MonoBehaviour {
 
-    public static bool paused = false;
+    public delegate void pause();
+    public static event pause pauseEvent;
+    public static event pause unpauseEvent;
+
+    private float currentTimeScale = 1.0f;
+
     public GameObject optionsMenu;
-    public Button playButton = null;
-    public Button settingsButton = null;
-    public Button aboutButton = null;
 
     public void ChangeScene(int scene)
     {
-        if (paused)
-        {
-            Time.timeScale = 1.0f;
-        }
+        unpauseEvent();
         SceneManager.LoadScene(scene);
     }
 
     void Start()
     {
         optionsMenu.SetActive(false);
+    }
+
+    void OnEnable()
+    {
+        pauseEvent += PauseGame;
+        unpauseEvent += UnpauseGame;
+    }
+
+    void OnDisable()
+    {
+        pauseEvent -= PauseGame;
+        unpauseEvent -= UnpauseGame;
     }
     void OnGUI()
     {
@@ -38,38 +49,23 @@ public class EventHandler : MonoBehaviour {
         if (optionsMenu.activeInHierarchy)
         {
             optionsMenu.SetActive(false);
-            if (SceneManager.GetActiveScene().buildIndex == 0)
-            {
-                playButton.interactable = true;
-                settingsButton.interactable = true;
-                aboutButton.interactable = true;
-            } else if (SceneManager.GetActiveScene().buildIndex == 1)
-            {
-                if (Player.alive)
-                {
-                    Time.timeScale = 1.0f;
-                } else
-                {
-                    Time.timeScale = 0.1f;
-                }
-                paused = false;
-            }
-            
-
+            unpauseEvent();
         } else
         {
             optionsMenu.SetActive(true);
-            if (SceneManager.GetActiveScene().buildIndex == 0)
-            {
-                playButton.interactable = false;
-                settingsButton.interactable = false;
-                aboutButton.interactable = false;
-            } else if (SceneManager.GetActiveScene().buildIndex == 1)
-            {
-                Time.timeScale = 0.0f;
-                paused = true;
-            }
+            pauseEvent();
         }
+    }
+
+    void PauseGame()
+    {
+        currentTimeScale = Time.timeScale;
+        Time.timeScale = 0.0f;
+    }
+
+    void UnpauseGame()
+    {
+        Time.timeScale = currentTimeScale;
     }
     public void ExitGame()
     {

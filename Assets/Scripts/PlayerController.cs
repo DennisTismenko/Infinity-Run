@@ -19,6 +19,8 @@ public class PlayerController : MonoBehaviour {
 	public float fireRate;
 	private float nextFire;
 
+    bool isEnabled = true;
+
 	[Range (10,600)]
 	public float depth;
 
@@ -34,24 +36,39 @@ public class PlayerController : MonoBehaviour {
 	
 	}
 
+    void OnEnable()
+    {
+        EventHandler.pauseEvent += PauseHandler;
+        EventHandler.unpauseEvent += UnpauseHandler;
+    }
+
+    void OnDisable()
+    {
+        EventHandler.pauseEvent -= PauseHandler;
+        EventHandler.unpauseEvent -= UnpauseHandler;
+    }
+
 
 	// Update is called once per frame
 	void Update () {
+    if (isEnabled)
+        {
+            Move();
+            if (Input.GetButton("Fire1") && canShoot)
+            {
+                StopCoroutine("FireWeapon");
+                StartCoroutine("FireWeapon", shotSpawn1);
+                StartCoroutine("FireWeapon", shotSpawn2);
 
-	Move ();
+            }
+        }
 
 		if (!Player.alive) 
 		{
 			gameObject.GetComponent<PlayerController>().enabled = false;
 		}
 
-		if (Input.GetButton ("Fire1") && canShoot)
-		{
-			StopCoroutine ("FireWeapon");
-			StartCoroutine ("FireWeapon", shotSpawn1);
-			StartCoroutine ("FireWeapon", shotSpawn2);
-
-		}
+		
 
 		//rb.position = new Vector3 (rb.position.x, rb.position.y, 2.921f);
 	}
@@ -113,8 +130,14 @@ public class PlayerController : MonoBehaviour {
 
 	}
 
-	void OnCollisionEnter(Collision col){
-		
-	}
+	void PauseHandler()
+    {
+        isEnabled = false;
+    }
+
+    void UnpauseHandler()
+    {
+        isEnabled = true;
+    }
 		
 }	

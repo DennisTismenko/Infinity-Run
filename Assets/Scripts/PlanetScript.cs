@@ -17,10 +17,6 @@ public class PlanetScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (health <= 0) {
-			kill ();
-		}
-	
 	}
 
 	void OnTriggerEnter(Collider col){
@@ -34,7 +30,10 @@ public class PlanetScript : MonoBehaviour {
 
 	void takeDamage (float amount){
 		health -= amount;
-		Debug.Log (health);
+        if (health <= 0)
+        {
+            kill();
+        }
 	}
 
 	void kill(){
