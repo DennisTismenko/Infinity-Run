@@ -45,17 +45,15 @@ public class HealthBarScript : MonoBehaviour {
 	}
 
 	void Update(){
-		
-	}
-
-    void OnGUI()
-    {
-
         Vector3 position = Camera.main.WorldToScreenPoint(player.transform.position);
         containerTransform.position = new Vector3(position.x, position.y, 0);
         healthTransform.position = new Vector3(position.x, position.y + healthYDiff, 0);
         damageTransform.position = new Vector3(position.x, position.y + damageYDiff, 0);
         healthTextTransform.position = new Vector3(position.x, position.y + healthTextYDiff, 0);
+    }
+
+    void OnGUI()
+    {
     }
 
     void UpdateGUI()

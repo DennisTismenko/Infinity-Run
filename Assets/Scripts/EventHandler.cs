@@ -45,7 +45,13 @@ public class EventHandler : MonoBehaviour {
                 aboutButton.interactable = true;
             } else if (SceneManager.GetActiveScene().buildIndex == 1)
             {
-                Time.timeScale = 1.0f;
+                if (Player.alive)
+                {
+                    Time.timeScale = 1.0f;
+                } else
+                {
+                    Time.timeScale = 0.1f;
+                }
                 paused = false;
             }
             
