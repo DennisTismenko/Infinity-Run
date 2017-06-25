@@ -9,8 +9,11 @@ public class Player : MonoBehaviour
     public static float health;
     public static float armour;
     public static float damage;
+
     public delegate void tookDamage();
     public static event tookDamage playerHit;
+    public static event tookDamage playerDead;
+
 
     public static bool alive;
     public static bool godMode;
@@ -18,11 +21,24 @@ public class Player : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        alive = true;
-        maxHp = 100f;
-        health = maxHp;
-        armour = 0;
-        damage = 10;
+    }
+
+    void OnEnable()
+    {
+        EventHandler.startGame += InitPlayer;
+        EventHandler.startGame += InitSettings;
+        EventHandler.endGame += KillSettings;
+        EventHandler.endGame += KillPlayer;
+        EventHandler.endGame += ClearMap;
+    }
+
+    void OnDisable()
+    {
+        EventHandler.startGame -= InitPlayer;
+        EventHandler.startGame -= InitSettings;
+        EventHandler.endGame -= KillPlayer;
+        EventHandler.endGame -= KillSettings;
+        EventHandler.endGame -= ClearMap;
     }
 
     // Update is called once per frame
@@ -31,16 +47,12 @@ public class Player : MonoBehaviour
     }
 
 
-    void killPlayer()
+    void KillPlayer()
     {
-        DestroyEnemies();
-        DestroyPickups();
         armour = 0;
         health = 0;
         alive = false;
-        DisableDraw();
         this.gameObject.GetComponent<DestroyByCollisionBigExplosion>().Invoke("PlayBigExplosion", 0);
-        Time.timeScale = 0.1F;
     }
 
 
@@ -65,7 +77,7 @@ public class Player : MonoBehaviour
         }
         if (health <= 0 && alive)
         {
-            killPlayer();
+            playerDead();
         }
     }
 
@@ -112,4 +124,32 @@ public class Player : MonoBehaviour
             pickups[i].SetActive(false);
         }
     }
+
+    void InitPlayer()
+    {
+        alive = true;
+        maxHp = 100f;
+        health = maxHp;
+        armour = 0;
+        damage = 10;
+    }
+
+    void InitSettings()
+    {
+        Time.timeScale = 1.0f;
+    }
+
+    void KillSettings()
+    {
+        Time.timeScale = 0.1F;
+    }
+
+    void ClearMap()
+    {
+        DisableDraw();
+        DestroyEnemies();
+        DestroyPickups();
+    }
+
+
 }

@@ -12,7 +12,6 @@ public class PlayerController : MonoBehaviour {
 	public float topBorder;
 	public float bottomBorder;
 
-	//private Player player;
 	public GameObject shot;
 	public Transform shotSpawn1;
 	public Transform shotSpawn2;
@@ -25,57 +24,26 @@ public class PlayerController : MonoBehaviour {
 	public float depth;
 
 	private Rigidbody rb;
-	bool canShoot;
+	bool canShoot = true;
 
 	// Use this for initialization
 	void Start () {
-
-		canShoot = true;
-		rb = GetComponent <Rigidbody> ();
-
-	
+        rb = GetComponent <Rigidbody> ();
 	}
-
-    void OnEnable()
-    {
-        EventHandler.pauseEvent += PauseHandler;
-        EventHandler.unpauseEvent += UnpauseHandler;
-    }
-
-    void OnDisable()
-    {
-        EventHandler.pauseEvent -= PauseHandler;
-        EventHandler.unpauseEvent -= UnpauseHandler;
-    }
-
 
 	// Update is called once per frame
 	void Update () {
-    if (isEnabled)
+        Move();
+        if (Input.GetButton("Fire1") && canShoot)
         {
-            Move();
-            if (Input.GetButton("Fire1") && canShoot)
-            {
-                StopCoroutine("FireWeapon");
-                StartCoroutine("FireWeapon", shotSpawn1);
-                StartCoroutine("FireWeapon", shotSpawn2);
-
-            }
+            StopCoroutine("FireWeapon");
+            StartCoroutine("FireWeapon", shotSpawn1);
+            StartCoroutine("FireWeapon", shotSpawn2);
         }
-
-		if (!Player.alive) 
-		{
-			gameObject.GetComponent<PlayerController>().enabled = false;
-		}
-
-		
-
-		//rb.position = new Vector3 (rb.position.x, rb.position.y, 2.921f);
 	}
 
 	void FixedUpdate()
 	{
-
 		if (Input.GetKey (KeyCode.Q)) {
 			rb.AddTorque (transform.forward * turnSpeed * Time.deltaTime, ForceMode.Force);
 		}
@@ -83,7 +51,6 @@ public class PlayerController : MonoBehaviour {
 		else if (Input.GetKey (KeyCode.E)) {
 			rb.AddTorque (-transform.forward * turnSpeed * Time.deltaTime, ForceMode.Force);
 		}
-		
 
 		if (rb.transform.position.x <=leftBorder || rb.transform.position.x >=rightBorder)
 		{
@@ -117,7 +84,6 @@ public class PlayerController : MonoBehaviour {
 		canShoot = false;
 		yield return new WaitForSeconds(fireRate);
 		canShoot = true;
-		
 	}
 
 	void Move(){
@@ -128,16 +94,5 @@ public class PlayerController : MonoBehaviour {
 		worldPos = (worldPos - transform.position);
 		rb.AddForce (worldPos * speed,ForceMode.Force);
 
-	}
-
-	void PauseHandler()
-    {
-        isEnabled = false;
-    }
-
-    void UnpauseHandler()
-    {
-        isEnabled = true;
-    }
-		
+	}	
 }	
