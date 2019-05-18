@@ -1,4 +1,4 @@
 <div align="center">
-  <img src="media/title_screen.gif" height="540" width="960"/>
+  <img src="media/title_screen.gif" height="405" width="720"/>
   <h1>Infinity Run - 3D Space Shooter</h1>
 </div>
