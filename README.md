@@ -1,6 +1,6 @@
 <div align="center">
   <img src="media/title_screen.gif" height="540" width="960"/>
-  <h6>Main Menu Screen<h6>
+  <h6><i>Main Menu Screen</i><h6>
   <h1 style="margin: 0;">Infinity Run - 3D Space Shooter</h1>
 </div>
 
