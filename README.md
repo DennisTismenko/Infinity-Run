@@ -15,7 +15,5 @@ Infinity Run is a 3D space shooter created with the Unity Game Engine. Created a
 * [Linux](https://dtismenko.com/game/infinity-run/demo/InfinityRun_Linux.zip)
 ## Gameplay Preview
 <div align="center">
-  <video autoplay loop muted playsinline height="405" width="720">
-    <source src="media/gameplay.mp4" type="video/mp4"/>
-  </video>
+  <img src="media/gameplay.gif" height="405" width="720"/>
 </div
